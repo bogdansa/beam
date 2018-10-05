@@ -1,17 +1,24 @@
 #include "stdafx.h"
 #include "Paint.h"
 
+/** Нарисовать сетку.
+* @param width - ширина области отрисовки.
+* @param height - высота области отрисовки.
+* @param pMemDC - указатель на CDC.
+* @param w - объект CRect.*/
 void Paint::DrawGrid(int width, int height, CDC* pMemDC, CRect w)
 {
+	/** Background.*/
 	pMemDC->FillSolidRect(&w, RGB(175, 175, 175));
 
 	CPen penBlack, *oldpen;
-	penBlack.CreatePen(PS_DOT, 1, RGB(0, 0, 0));	//серый
+	penBlack.CreatePen(PS_DOT, 1, RGB(0, 0, 0));
 	oldpen = pMemDC->SelectObject(&penBlack);
 
 	double step_x = (double)w.Width() / width;
 	double step_y = (double)w.Height() / height;
 
+	/** Отрисовка сетки.*/
 	double x, y;
 	x = 0;
 	for (int i = 0; i <= width; i++)
@@ -28,31 +35,38 @@ void Paint::DrawGrid(int width, int height, CDC* pMemDC, CRect w)
 		y += step_y;
 	}
 
-	//прорисуем оси
+	/** Отрисовка осей.*/
 	double x0 = w.Width() / 2.;
 	double y0 = w.Height() / 2.;
 	CPen penGray;
-	penGray.CreatePen(PS_SOLID, 2, RGB(125, 125, 125));
+	penGray.CreatePen(PS_SOLID, 2, RGB(95, 95, 95));
 	oldpen = pMemDC->SelectObject(&penGray);
-	//ось ОУ
+	// ось Оу
 	pMemDC->MoveTo(x0, 0);
 	pMemDC->LineTo(x0, w.Height());
-	//ось OX
+	// ось Oх
 	pMemDC->MoveTo(0, y0);
 	pMemDC->LineTo(w.Width(), y0);
 
 }
+
+/** Нарисовать источники.
+* @param x0 - координата источника по Ох.
+* @param у0 - координата источника по Оу.
+* @param pMemDC - указатель на CDC.
+* @param w - объект CRect.
+*/
 void Paint::DrawCircle(int x0, int y0, CDC* pMemDC, CRect w)
 {
-	CPen penBlue;
-	penBlue.CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
+	CPen pen;
+	pen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
 
 	CPen *oldpen;
-	oldpen = pMemDC->SelectObject(&penBlue);
-	CBrush BrushBlue;
-	BrushBlue.CreateSolidBrush(RGB(0, 0, 255));
-	pMemDC->SelectObject(&BrushBlue);
-	pMemDC->SelectObject(&penBlue);
-	int rad = 5;
+	oldpen = pMemDC->SelectObject(&pen);
+	CBrush Brush;
+	Brush.CreateSolidBrush(RGB(255, 0, 0));
+	pMemDC->SelectObject(&Brush);
+	pMemDC->SelectObject(&pen);
+	int rad = 4;
 	pMemDC->Ellipse(x0 - rad, y0 - rad, x0 + rad, y0 + rad);
 }

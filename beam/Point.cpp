@@ -55,14 +55,7 @@ bool Point::operator < (const Point & right) const
 		//if ((abs(r1 - r2) < 1.e-15))
 		if ((abs(r1 - r2) == 0))
 		{
-			if (alpha1 < alpha2)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return (alpha1 < alpha2) ? true : false;
 		}
 		else
 		{
@@ -88,14 +81,7 @@ bool Point::operator > (const Point & right) const
 		//if ((abs(r1 - r2) < 1.e-15))
 		if ((abs(r1 - r2) == 0))
 		{
-			if (alpha1 > alpha2)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return (alpha1 > alpha2) ? true : false;
 		}
 		else
 		{

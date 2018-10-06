@@ -13,9 +13,11 @@ struct RadPatt
 	double elevation;
 	/** Азимут.*/
 	double аzimuth;
-
+	/** Координта по Ох.*/
 	double x;
+	/** Координта по Оу.*/
 	double y;
+	/** Координта по Оz.*/
 	double z;
 };
 
@@ -28,8 +30,11 @@ struct Cmplx
 class RadiationPattern
 {
 public:
+	/** Радиус наблюдения.*/
 	double Distance;
+	/** Длина волны.*/
 	double Wavelength;
+	/** Амплитуда.*/
 	double Amplitude;
 	RadiationPattern();
 	RadPatt FindIForDistance(std::vector<Point> ant, double phi, double theta);

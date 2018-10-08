@@ -11,9 +11,9 @@ void Paint::DrawGrid(int width, int height, CDC* pMemDC, CRect w)
 	/** Background.*/
 	pMemDC->FillSolidRect(&w, RGB(175, 175, 175));
 
-	CPen penBlack, *oldpen;
-	penBlack.CreatePen(PS_DOT, 1, RGB(0, 0, 0));
-	oldpen = pMemDC->SelectObject(&penBlack);
+	CPen penGrid;
+	penGrid.CreatePen(PS_DOT, 1, RGB(0, 0, 0));
+	pMemDC->SelectObject(&penGrid);
 
 	double step_x = (double)w.Width() / width;
 	double step_y = (double)w.Height() / height;
@@ -38,9 +38,9 @@ void Paint::DrawGrid(int width, int height, CDC* pMemDC, CRect w)
 	/** ќтрисовка осей.*/
 	double x0 = w.Width() / 2.;
 	double y0 = w.Height() / 2.;
-	CPen penGray;
-	penGray.CreatePen(PS_SOLID, 2, RGB(95, 95, 95));
-	oldpen = pMemDC->SelectObject(&penGray);
+	CPen penAxes;
+	penAxes.CreatePen(PS_SOLID, 2, RGB(95, 95, 95));
+	pMemDC->SelectObject(&penAxes);
 	// ось ќу
 	pMemDC->MoveTo(x0, 0);
 	pMemDC->LineTo(x0, w.Height());
@@ -61,11 +61,10 @@ void Paint::DrawCircle(int x0, int y0, CDC* pMemDC, CRect w)
 	CPen pen;
 	pen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
 
-	CPen *oldpen;
-	oldpen = pMemDC->SelectObject(&pen);
+	pMemDC->SelectObject(&pen);
 	CBrush Brush;
 	Brush.CreateSolidBrush(RGB(255, 0, 0));
-	pMemDC->SelectObject(&Brush);
+	//pMemDC->SelectObject(&Brush);
 	pMemDC->SelectObject(&pen);
 	int rad = 4;
 	pMemDC->Ellipse(x0 - rad, y0 - rad, x0 + rad, y0 + rad);

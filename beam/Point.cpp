@@ -2,7 +2,7 @@
 #include "Point.h"
 
 /** Конструктор по умолчанию.*/
-Point::Point()
+MyPoint::MyPoint()
 {
 	x = 0;
 	y = 0;
@@ -10,7 +10,7 @@ Point::Point()
 }
 
 /** Конструктор с параметрами.*/
-Point::Point(double X, double Y, double Z)
+MyPoint::MyPoint(double X, double Y, double Z)
 {
 	x = X;
 	y = Y;
@@ -18,13 +18,13 @@ Point::Point(double X, double Y, double Z)
 };
 
 /** Перегруженный функтор.*/
-Point::operator Point() const
+MyPoint::operator MyPoint() const
 { 
-	return Point(x, y, z);
+	return MyPoint(x, y, z);
 };
 
 /** Перегруженный оператор ==.*/
-bool Point::operator == (Point point)
+bool MyPoint::operator == (MyPoint point)
 {
 	double diffX = abs(x - point.x);
 	double diffY = abs(y - point.y);
@@ -33,13 +33,13 @@ bool Point::operator == (Point point)
 };
 
 /** Перегруженный оператор !=.*/
-bool Point::operator != (Point point)
+bool MyPoint::operator != (MyPoint point)
 {
 	return (*this == point) ? false : true;
 };
 
 /** Перегруженный оператор <.*/
-bool Point::operator < (const Point & right) const
+bool MyPoint::operator < (const MyPoint & right) const
 {
 	double r1 = x * x + y * y;
 	double r2 = right.x * right.x + right.y * right.y;
@@ -65,7 +65,7 @@ bool Point::operator < (const Point & right) const
 };
 
 /** Перегруженный оператор >.*/
-bool Point::operator > (const Point & right) const
+bool MyPoint::operator > (const MyPoint & right) const
 {
 	double r1 = x * x + y * y;
 	double r2 = right.x * right.x + right.y * right.y;

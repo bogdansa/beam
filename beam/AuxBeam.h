@@ -37,8 +37,8 @@ public:
 	/** Àìïëèòóäà.*/
 	double Amplitude;
 	RadiationPattern();
-	RadPatt FindIForDistance(std::vector<Point> ant, double phi, double theta);
-	std::vector<RadPatt> FindRadPatt(std::vector<Point> ant, std::vector<double>phi, std::vector<double>theta);
+	RadPatt FindIForDistance(std::vector<MyPoint> ant, double phi, double theta);
+	std::vector<RadPatt> FindRadPatt(std::vector<MyPoint> ant, std::vector<double>phi, std::vector<double>theta);
 	void Convert(double phi, double theta, double &elevation, double &àzimuth);
 
 };

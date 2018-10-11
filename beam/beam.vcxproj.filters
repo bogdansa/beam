@@ -42,6 +42,9 @@
     <ClInclude Include="ChartViewer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="PaintBeam2D.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="beam.cpp">
@@ -63,6 +66,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="ChartViewer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="PaintBeam2D.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

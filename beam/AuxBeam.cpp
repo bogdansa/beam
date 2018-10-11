@@ -7,13 +7,13 @@ RadiationPattern::RadiationPattern()
 
 }
 
-RadPatt RadiationPattern::FindIForDistance(std::vector<Point> ant, double phi, double theta)
+RadPatt RadiationPattern::FindIForDistance(std::vector<MyPoint> ant, double phi, double theta)
 {
 	RadPatt radpat;
 	Convert(phi, theta, radpat.elevation, radpat.àzimuth);
 	double k = 2 * M_PI / Wavelength;
 
-	Point point;
+	MyPoint point;
 	point.x = Distance * sin(theta) * cos(phi);
 	point.y = Distance * sin(theta) * sin(phi);
 	point.z = Distance * cos(theta);
@@ -41,7 +41,7 @@ RadPatt RadiationPattern::FindIForDistance(std::vector<Point> ant, double phi, d
 	radpat.A = sqrt(buf_E.Real * buf_E.Real + buf_E.Image * buf_E.Image);
 	return radpat;
 }
-std::vector<RadPatt> RadiationPattern::FindRadPatt(std::vector<Point> ant, std::vector<double> phi, std::vector<double> theta)
+std::vector<RadPatt> RadiationPattern::FindRadPatt(std::vector<MyPoint> ant, std::vector<double> phi, std::vector<double> theta)
 {
 	std::vector<RadPatt> radpat;
 	radpat.resize(phi.size() * theta.size());

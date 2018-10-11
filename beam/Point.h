@@ -2,22 +2,22 @@
 
 #include <iostream>
 
-class Point
+class MyPoint
 {
 public:
 	double x, y, z;
 	/** Конструктор по умолчанию.*/
-	Point();
+	MyPoint();
 	/** Конструктор с параметрами.*/
-	Point(double X, double Y, double Z);
+	MyPoint(double X, double Y, double Z);
 	/** Перегруженный функтор.*/
-	operator Point() const;
+	operator MyPoint() const;
 	/** Перегруженный оператор ==.*/
-	bool operator == (Point point);
+	bool operator == (MyPoint point);
 	/** Перегруженный оператор !=.*/
-	bool operator != (Point point);
+	bool operator != (MyPoint point);
 	/** Перегруженный оператор <.*/
-	bool operator < (const Point & right) const;
+	bool operator < (const MyPoint & right) const;
 	/** Перегруженный оператор >.*/
-	bool operator > (const Point & right) const;
+	bool operator > (const MyPoint & right) const;
 };

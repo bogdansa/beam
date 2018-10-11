@@ -200,6 +200,7 @@
     <ClInclude Include="beamDlg.h" />
     <ClInclude Include="ChartViewer.h" />
     <ClInclude Include="Paint.h" />
+    <ClInclude Include="PaintBeam2D.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="beamDlg.cpp" />
     <ClCompile Include="ChartViewer.cpp" />
     <ClCompile Include="Paint.cpp" />
+    <ClCompile Include="PaintBeam2D.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

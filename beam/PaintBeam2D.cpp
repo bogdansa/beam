@@ -43,7 +43,7 @@ Gdiplus::REAL PaintBeam2D::Trans_Y(LPDRAWITEMSTRUCT lpDrawItemStruct, Gdiplus::R
 }
 
 /** Инициализировать восстановленное изображение(сигнал).*/
-void PaintBeam2D::set_vector(const std::vector<MyPoint>& vec)
+void PaintBeam2D::set_vector(const std::vector<std::vector<double>> & vec)
 {
 	_vec_beam2D.clear();
 	_vec_beam2D = vec;
@@ -59,24 +59,30 @@ void PaintBeam2D::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	Pen penEllipse(Color::Red, 1);
 	SolidBrush brushPoints(Color::Yellow);
 
-	paint_virtual.Clear(Color::White);
+	paint_virtual.Clear(Color::Black);
 
 	if (!_vec_beam2D.empty())
 	{
-		size_t size = _vec_beam2D.size();
+		size_t width = _vec_beam2D.size();
+		size_t height = _vec_beam2D[0].size();
+		
 		//Bitmap bmpTmp(size, size);
-		for (size_t i = 0; i < size; ++i)
+		for (size_t i = 0; i < width; ++i)
 		{
-			double val = _vec_beam2D[i].z;
-			Color color;
-			color = Color::MakeARGB(255, val, val, val);
-			SolidBrush brush(color);
-			//grBmp.FillRectangle(&brush, 
-			//	Trans_X(lpDrawItemStruct, j), 
-			//	Trans_Y(lpDrawItemStruct, i), 
-			//	Width(lpDrawItemStruct, 1), 
-			//	Height(lpDrawItemStruct, 1));
-			bmp.SetPixel(Trans_X(lpDrawItemStruct, _vec_beam2D[i].x), Trans_Y(lpDrawItemStruct, _vec_beam2D[i].y), color);
+			for (size_t j = 0; j < height; ++j)
+			{
+				double val = _vec_beam2D[i][j];
+				Color color;
+				color = Color::MakeARGB(255, val, val, val);
+				SolidBrush brush(color);
+				//grBmp.FillRectangle(&brush, 
+				//	Trans_X(lpDrawItemStruct, j), 
+				//	Trans_Y(lpDrawItemStruct, i), 
+				//	Width(lpDrawItemStruct, 1), 
+				//	Height(lpDrawItemStruct, 1));
+
+				bmp.SetPixel(i, j, color);
+			}
 		}
 		//gr.DrawImage(&bmpTmp, 0, lpDrawItemStruct->rcItem.bottom, lpDrawItemStruct->rcItem.right, -lpDrawItemStruct->rcItem.bottom);
 	}

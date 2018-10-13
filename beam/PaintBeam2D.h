@@ -14,7 +14,7 @@ private:
 		_step_x, _step_y;   // Шаг по х и у
 
 	/** Восстановленное изображение.*/
-	std::vector<MyPoint> _vec_beam2D;
+	std::vector<std::vector<double>> _vec_beam2D;
 	
 public:
 	/** Конструктор.*/
@@ -31,7 +31,7 @@ public:
 	Gdiplus::REAL Trans_Y(LPDRAWITEMSTRUCT lpDrawItemStruct, Gdiplus::REAL y);
 
 	/** Инициализировать вектор.*/
-	void set_vector(const std::vector<MyPoint> & vec);
+	void set_vector(const std::vector<std::vector<double>> & vec);
 	
 	virtual void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct);
 };
